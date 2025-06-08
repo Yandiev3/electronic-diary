@@ -1,0 +1,36 @@
+.widget__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 1400px;
+    gap: 64px;
+    margin:auto;
+    padding: 8px 20px;
+    border: 1px solid;
+    .widget{
+        width: 250px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 8px;
+        border-radius: 4px;
+        &:hover{
+
+            border: 1px solid var(--primary-color);
+        }
+    }
+    .widget__title{
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--second-color);
+        padding: 0px;
+        margin: 0px;
+    }
+    .title-count{
+        color: black;
+        font-size: 20px;
+        font-weight: 500;
+    }
+}

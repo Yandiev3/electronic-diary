@@ -1,0 +1,50 @@
+:host {
+    display: flex;
+    height: 80px;
+    padding: 20px 20px;
+    border-right: 1px solid var(--lith-color);
+    // background-color: red;
+}
+
+.main-menu-list {
+    display: flex;
+    grid-gap: 16px;
+    list-style: none;
+    padding: 0;
+    flex: 1;
+    margin-bottom: 32px;
+}
+
+.menu-item {
+    padding: 16px 12px;
+    cursor: pointer;
+    border: none;
+    color: var(--lith-color);
+    display: grid;
+    grid-template-columns: 16px 1fr max-content;
+    grid-gap: 12px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    background: none;
+    align-items: center;
+    margin: 0;
+    border-radius: 4px; 
+    
+    &:hover,
+    &:focus {
+        border: 1px solid;
+        color: var(--primary-color);
+        
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+    
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

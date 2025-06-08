@@ -1,0 +1,76 @@
+<main>
+    <div class="student__container">
+        <div class="student__title">
+            <h3>Студенты</h3>
+            <button (click)="showModal = true">+ Добавить</button>
+        </div>
+
+        <!-- Таблица студентов -->
+        <table *ngIf="students.length > 0">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Группа</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students">
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.group }}</td>
+                    <td>{{ student.email || '-' }}</td>
+                    <td>{{ student.number || '-' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal" *ngIf="showModal">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h4>Добавить студента</h4>
+                    <button (click)="showModal = false">&times;</button>
+                </div>
+                
+                <form class="modal__form" (ngSubmit)="addStudent()">
+                    <div class="form-group">
+                        <label>Имя *</label>
+                        <input type="text" [(ngModel)]="newStudent.name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Фамилия *</label>
+                        <input type="text" [(ngModel)]="newStudent.lastname" name="lastname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Отчество</label>
+                        <input type="text" [(ngModel)]="newStudent.patronymic" name="patronymic">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" [(ngModel)]="newStudent.email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" [(ngModel)]="newStudent.number" name="number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Группа *</label>
+                        <input type="text" [(ngModel)]="newStudent.group" name="group" required>
+                    </div>
+
+                    <div class="modal__actions">
+                        <button type="button" (click)="showModal = false">Отмена</button>
+                        <button type="submit">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

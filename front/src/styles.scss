@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@use "fonts";
+
+:root{
+    --second-color : rgb(90, 90, 90);
+    --primary-color : #7D3BED;
+}
+
+body{
+    // background-color: red;
+    // color: white;
+    font-family: 'JetBrains Mono';
+    margin: auto;
+    box-sizing: border-box;
+    width: 1440px;
+}
+
+header{
+    width: 100%;    
+    background-color: red;
+}
+
+main{
+    margin: 0 auto;
+}

@@ -1,0 +1,73 @@
+<div class="grade-journal">
+  <div class="filters">
+    <h2>Журнал оценок</h2>
+    <form (submit)="loadFilteredGrades()">
+      <select [(ngModel)]="filterStudentId" name="filterStudent">
+        <option value="">Все студенты</option>
+        <option *ngFor="let student of students" [value]="student._id">
+          {{ student.lastname }} {{ student.name }} ({{ student.group }})
+        </option>
+      </select>
+
+      <select [(ngModel)]="filterSubject" name="filterSubject">
+        <option value="">Все предметы</option>
+        <option *ngFor="let subject of subjects" [value]="subject">
+          {{ subject }}
+        </option>
+      </select>
+
+      <button type="submit">Применить фильтр</button>
+      <button type="button" (click)="clearFilters()">Сбросить</button>
+    </form>
+  </div>
+
+  <div class="add-grade">
+    <h3>Добавить оценку</h3>
+    <form (submit)="addGrade()">
+      <select [(ngModel)]="selectedStudentId" name="student" required>
+        <option value="" disabled selected>Выберите студента</option>
+        <option *ngFor="let student of students" [value]="student._id">
+          {{ student.lastname }} {{ student.name }} ({{ student.group }})
+        </option>
+      </select>
+
+      <select [(ngModel)]="selectedSubject" name="subject" required>
+        <option value="" disabled selected>Выберите предмет</option>
+        <option *ngFor="let subject of subjects" [value]="subject">
+          {{ subject }}
+        </option>
+      </select>
+
+      <input type="number" [(ngModel)]="newGrade" name="grade" 
+             min="1" max="5" placeholder="Оценка" required>
+      <input type="text" [(ngModel)]="newComment" name="comment" placeholder="Комментарий">
+
+      <button type="submit" [disabled]="!selectedStudentId || !selectedSubject || !newGrade">
+        Добавить
+      </button>
+    </form>
+  </div>
+
+  <div class="grades-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Студент</th>
+          <th>Предмет</th>
+          <th>Оценка</th>
+          <th>Дата</th>
+          <th>Комментарий</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grade of grades">
+          <td>{{ grade.studentId?.lastname }} {{ grade.studentId?.name }}</td>
+          <td>{{ grade.subject }}</td>
+          <td>{{ grade.grade }}</td>
+          <td>{{ grade.date | date:'dd.MM.yyyy' }}</td>
+          <td>{{ grade.comment || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
